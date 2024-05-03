@@ -6,6 +6,39 @@ let deckSpace = document.querySelector('.deck');
 
 console.log({deck, others, left, right, current, deckSpace});
 
+let playerCards = [];
+for (let p = 0; p < 8; p++) {
+    playerCards.push([]);
+    for (let i = 0; i < 8; i++) {
+        card = deck.splice(0, 1);
+        playerCards[p].push(card[0]);
+        console.log({playerCards, deck});
+    }
+}
+let target;
+for (let p = 0; p < playerCards.length; p++) {
+    switch(p) {
+        case 0:
+            target = current;
+            break;
+        case (playerCards.length - 1):
+            target = right;
+            break;
+        case 1:
+            target = left;
+            break;
+        default:
+            let newPlayer = document.createElement('div')
+            newPlayer.classList = 'otherPlayer '+ p;
+            others.append(newPlayer);
+            target = newPlayer;
+    }
+    for (let i = 0; i < 8; i++) {
+        playerCards[p][i]?.render(target);
+    }
+}
+
+
 deck[0].render(deckSpace);
 deck[1].hidden = false;
 deck[1].render(deckSpace);
