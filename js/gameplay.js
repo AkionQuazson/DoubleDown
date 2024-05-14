@@ -6,6 +6,20 @@ const passTurn = () => {
 
 const turnUp = () => {
     //For each player: 
+    playerCards.forEach((player, i) => {
+        let playCards = player[0];
+        let randSelect = Math.floor(Math.random() * playCards.length);
+        let randSelect2
+        do{
+            randSelect2 = Math.floor(Math.random() * playCards.length);
+
+        } while (randSelect === randSelect2)
+        if (randSelect === randSelect2 - (playCards.length / 2)) randSelect2++;
+        if (randSelect === randSelect2 + (playCards.length / 2)) randSelect2--;
+        playCards[randSelect].hidden = false;
+        playCards[randSelect2].hidden = false;
+    })
+    renderGame();
         //randomly select any of the player's cards.
         //Randomly select another, except that it can't be +-4 (half of the starting size)
         //If playing 12, pick a third, except that it can't be +-6 of either of the faceup cards
@@ -25,6 +39,17 @@ const drawDiscard = () => {
 }
 
 const play = () => {
-    //
+    //Take card from Selected
+    //if triggered selection is +- 4 of revealed card (+-6 in case of 12)
 }
 
+const turnAllUp = () => {
+    playerCards.forEach((player, i) => {
+        player[0].forEach((card) => {
+            card.hidden = false;
+        })
+    })
+}
+
+turnUp();
+console.log('gameplay.js')
