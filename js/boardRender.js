@@ -16,7 +16,7 @@ for (let p = 0; p < 8; p++) {
     }
 }
 if (playerCards.length > 3) {
-    for (let p = 3; p < playerCards.length; p++){
+    for (let p = 2; p < playerCards.length - 1; p++){
         let newPlayer = document.createElement('div')
         newPlayer.classList = 'otherPlayer other'+ p;
         others.append(newPlayer);
@@ -38,6 +38,7 @@ let renderGame = () => {
             default:
                 target = document.querySelector('.other' + p);
             }
+console.log(playerCards[p][0], {target, p});
         for (let i = 0; i < playerCards.length; i++) {
             playerCards[p][0][i]?.render(target);
         }
