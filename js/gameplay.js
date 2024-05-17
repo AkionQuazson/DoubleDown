@@ -1,7 +1,11 @@
 const passTurn = () => {
     //Animate rotation and resize of otherPlayers ()
     //Move current player to end of line
+    let lastPlayer = playerCards.splice(playerCards.length - 1, 1);
+    playerCards = lastPlayer.concat(playerCards);
     //Re-render player cards
+console.log({playerCards, lastPlayer});
+    renderGame();
 }
 
 const turnUp = () => {
@@ -53,3 +57,7 @@ const turnAllUp = () => {
 
 turnUp();
 console.log('gameplay.js')
+document.querySelector('.rotationButton').addEventListener('click', (e) => {
+    e.preventDefault();
+    passTurn();
+});

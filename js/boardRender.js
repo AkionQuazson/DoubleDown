@@ -38,13 +38,14 @@ let renderGame = () => {
             default:
                 target = document.querySelector('.other' + p);
             }
-console.log(playerCards[p][0], {target, p});
+// console.log(playerCards[p][0], {target, p});
+        target.innerHTML = '';
         for (let i = 0; i < playerCards.length; i++) {
             playerCards[p][0][i]?.render(target);
         }
     }
     
-    
+    deckSpace.innerHTML = '';
     deck[0].render(deckSpace);
     deck[1].hidden = false;
     deck[1].render(deckSpace);

@@ -10,13 +10,13 @@ class Card {
         let displayCard = document.createElement('div');
         displayCard.id = `card${this.idNum}`
         displayCard.classList = 'card';
-        if (this.hidden) {
-            displayCard.classList += ' facedown'
-        }
-        else {
+        // if (this.hidden) {
+        //     displayCard.classList += ' facedown'
+        // }
+        // else {
             displayCard.classList += ' faceup'
             displayCard.innerHTML = this.value + ' ' + this.suit;
-        }
+        // }
         displayCard.addEventListener('click', (e) => {
             e.preventDefault();
             e.target.classList.toggle('facedown');
