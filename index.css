@@ -41,7 +41,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    width: calc(20% - 2px);
+    width: calc(19% - 2px);
     border: 1px solid #eefaff;
 }
 
@@ -60,6 +60,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.nonexistent {
+    border: none;
+    background-color: none;
 }
 .otherPlayer .card {
     width: 20%;

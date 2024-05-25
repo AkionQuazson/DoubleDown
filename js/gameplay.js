@@ -5,13 +5,23 @@ const passTurn = () => {
     //Move current player to end of line
     let lastPlayer = playerCards.splice(playerCards.length - 1, 1);
     playerCards = lastPlayer.concat(playerCards);
+    selectedCard = undefined;
     //Re-render player cards
 // console.log({playerCards, lastPlayer});
+    let allFaceUp = true;
+    for (let i = 0; i < playerCards[0][0].length; i++) {
+        if (playerCards[0][0][i].hidden === true) {
+            allFaceUp = false;
+            break;
+        }
+    }
     renderGame();
+    if (allFaceUp) turnAllUp();
 }
 
 const turnUp = () => {
     //For each player: 
+    
     playerCards.forEach((player, i) => {
         let playCards = player[0];
         let randSelect = Math.floor(Math.random() * playCards.length);
@@ -36,6 +46,11 @@ const drawDeck = () => {
     selectedCard = deck.splice(0, 1)[0];
     selectedCard.hidden = false;
     console.log('Drawing from deck', selectedCard)
+    if (deck.length <= 0) {
+        deck = discard.splice(1, discard.length - 2);
+        deck.forEach((card) => card.hidden = true);
+        shuffle();
+    }
     //Select the top card of the deck
     //Render 2nd-from-top deck
     //Animate it moving to the selected zone.
@@ -46,15 +61,6 @@ const drawDiscard = () => {
     if (selectedCard) return;
     selectedCard = discard.splice(discard.length - 1, 1)[0];
     console.log('Drawing from discard', selectedCard)
-    setTimeout(() => {
-        deckSpace.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (selectedCard) {
-                discard.push(selectedCard);
-                selectedCard = undefined;
-            }
-        })
-    }, 100);
         //Select top card of discard
         //Render 2nd-from-top discard
         //Animate it moving to the selected zone.
@@ -67,11 +73,33 @@ const play = (cardId) => {
     let slot = playerCards[0][0].findIndex((card) => {
         return card.idNum === cardId
     })
+    let oppositeSlot = (slot < playerCards[0][0].length / 2 ? slot + playerCards[0][0].length / 2 : slot - playerCards[0][0].length / 2);
+    if (!playerCards[0][0][slot]?.hidden && !playerCards[0][0][oppositeSlot]?.hidden) return;
+    if (playerCards[0][0][slot].value === selectedCard.value && !playerCards[0][0][slot]?.hidden) {
+        discard.push(selectedCard);
+        discard.push(playerCards[0][0][slot]);
+        discard.push(playerCards[0][0][oppositeSlot]);
+        discard[discard.length - 1].hidden = false;
+        playerCards[0][0][slot] = new Card();
+        playerCards[0][0][oppositeSlot] = new Card();
+        passTurn();
+        return;
+    }
+    if (playerCards[0][0][oppositeSlot].value === selectedCard.value && !playerCards[0][0][oppositeSlot]?.hidden) {
+        discard.push(selectedCard);
+        discard.push(playerCards[0][0][oppositeSlot]);
+        discard.push(playerCards[0][0][slot]);
+        discard[discard.length - 1].hidden = false;
+        playerCards[0][0][slot] = new Card();
+        playerCards[0][0][oppositeSlot] = new Card();
+        passTurn();
+        return;
+    }
+
     discard.push(playerCards[0][0][slot]);
     discard[discard.length - 1].hidden = false;
     playerCards[0][0][slot] = [selectedCard][0];
     playerCards[0][0][slot].hidden = false;
-    selectedCard = undefined;
     //Take card from Selected
     //if triggered selection is +- 4 of revealed card (+-6 in case of 12)
     passTurn();
@@ -95,16 +123,15 @@ const turnAllUp = () => {
                 case 'K':
                     break;
                 case 'W':
-                    val -= 3;
+                    score -= 3;
                     break;
                 default:
                     score += card.value;
                 }
         })
-        playerCards[1][score] = score;
-
+console.log({player, score})
+    player[1].score = score;
+console.log({playerCards, score})
+        endGame();
     })
 }
-
-turnUp();
-console.log('gameplay.js')
