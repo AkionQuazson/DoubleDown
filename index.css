@@ -27,7 +27,7 @@ body {
     position: absolute;
 	bottom: 0;
 	left: 0;
-	background: brown;
+	/* background: brown; */
 	z-index: 1;
 }
 
@@ -41,8 +41,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 20%;
-
+    width: calc(20% - 2px);
+    border: 1px solid #eefaff;
 }
 
 .card {
@@ -56,6 +56,7 @@ body {
     background-color: skyblue;
 }
 .faceup {
+    background-color: #fdffe4;
     display: flex;
     align-items: center;
     justify-content: center;

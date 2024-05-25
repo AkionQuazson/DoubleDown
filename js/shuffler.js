@@ -10,21 +10,30 @@ class Card {
         let displayCard = document.createElement('div');
         displayCard.id = `card${this.idNum}`
         displayCard.classList = 'card';
-        // if (this.hidden) {
-        //     displayCard.classList += ' facedown'
-        // }
-        // else {
+        if (this.hidden) {
+            displayCard.classList += ' facedown'
+        }
+        else {
             displayCard.classList += ' faceup'
             displayCard.innerHTML = this.value + ' ' + this.suit;
-        // }
-        displayCard.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.target.classList.toggle('facedown');
-            if (e.target.classList.contains('facedown')) e.target.innerHTML = '';
-            e.target.classList.toggle('faceup');
-            if (e.target.classList.contains('faceup')) e.target.innerHTML = this.value + ' ' + this.suit;
-
-        })
+        }
+        if (location.classList.contains('currentPlayer')) {
+            displayCard.addEventListener('click', (e) => {
+                e.preventDefault();
+                play(this.idNum);
+            })
+        }
+        else if (location.classList.contains('deck')) {
+            displayCard.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (this.hidden) {
+                    drawDeck();
+                }
+                else {
+                    drawDiscard();
+                }
+            })
+        }
         location.append(displayCard)
     }
 }
