@@ -97,7 +97,8 @@ let setupGame = (playerNumber) => {
     discard[1].hidden = false;
     playerCards = [];
     for (let p = 0; p < playerNumber; p++) {
-        playerCards.push([[], {score:0}]);
+        let name = playerList.children[p].children[0].value;
+        playerCards.push([[], {score:0, name}]);
         for (let i = 0; i < 8; i++) {
             card = deck.splice(0, 1);
             playerCards[p][0].push(card[0]);

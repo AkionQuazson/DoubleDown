@@ -41,8 +41,10 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: center;
     width: calc(19% - 2px);
-    border: 1px solid #eefaff;
+    border: 1px solid #202527;
+    border-radius: 25px;
 }
 
 .card {

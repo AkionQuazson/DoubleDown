@@ -127,11 +127,12 @@ const turnAllUp = () => {
                     break;
                 default:
                     score += card.value;
-                }
+            }
         })
-console.log({player, score})
-    player[1].score = score;
-console.log({playerCards, score})
-        endGame();
+        player[1].score = score;
     })
+    renderGame();
+    setTimeout(() => {
+        endGame();
+    }, 10000);
 }

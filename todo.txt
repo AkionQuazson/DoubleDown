@@ -1,0 +1,12 @@
+Style opening page
+Create tutorial
+Style end score page
+Add new game button on end page
+Buttons to navigate between "view board" and "view score"
+Style gamepage
+Add cellphone-size style
+Modifications
+    2 decks
+    2 cards in hand (draw third, then pick card in hand to play or discard)
+    12 cards in play
+    custom effects
