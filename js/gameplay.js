@@ -64,14 +64,14 @@ const drawDiscard = () => {
 const play = (cardId) => {
     if (!selectedCard) return;
     //consider making deck flash if !selectedCard
-    let slot = playerCards[0][0].find((card) => {
+    let slot = playerCards[0][0].findIndex((card) => {
         return card.idNum === cardId
     })
     discard.push(playerCards[0][0][slot]);
+    discard[discard.length - 1].hidden = false;
     playerCards[0][0][slot] = [selectedCard][0];
     playerCards[0][0][slot].hidden = false;
-console.log({playerCards, discard, selectedCard, slot})
-    // selectedCard = undefined;
+    selectedCard = undefined;
     //Take card from Selected
     //if triggered selection is +- 4 of revealed card (+-6 in case of 12)
     passTurn();
