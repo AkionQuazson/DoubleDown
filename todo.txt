@@ -11,3 +11,10 @@ Modifications
     2 cards in hand (draw third, then pick card in hand to play or discard)
     12 cards in play
     custom effects
+AI opponents
+    Will or will not pair AK or AW
+    Will draw K or A from discard (everyone draws Ws)
+    Will or will not look at playerLeft
+    Will or will not look at playerRight (more likely than playerLeft)
+    Will always reduce points vs trading off points to prevent double-downs
+    How aggressively will it close the game?
