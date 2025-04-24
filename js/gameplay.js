@@ -4,7 +4,9 @@ const passTurn = () => {
     //Animate rotation and resize of otherPlayers ()
     //Move current player to end of line
     let lastPlayer = playerCards.splice(playerCards.length - 1, 1);
+    let lastPlayerName = players.splice(players.length - 1, 1);
     playerCards = lastPlayer.concat(playerCards);
+    players = lastPlayerName.concat(players);
     selectedCard = undefined;
     //Re-render player cards
 // console.log({playerCards, lastPlayer});
@@ -36,13 +38,15 @@ const turnUp = () => {
         playCards[randSelect2].hidden = false;
     })
     renderGame();
-        //randomly select any of the player's cards.
-        //Randomly select another, except that it can't be +-4 (half of the starting size)
-        //If playing 12, pick a third, except that it can't be +-6 of either of the faceup cards
+
 }
 
 const drawDeck = () => {
-    if (selectedCard) return;
+    if (selectedCard) {
+        discard.push(selectedCard);
+        passTurn();
+        return;
+    };
     selectedCard = deck.splice(0, 1)[0];
     selectedCard.hidden = false;
     console.log('Drawing from deck', selectedCard)
@@ -51,19 +55,17 @@ const drawDeck = () => {
         deck.forEach((card) => card.hidden = true);
         shuffle();
     }
-    //Select the top card of the deck
-    //Render 2nd-from-top deck
-    //Animate it moving to the selected zone.
-    //turn it faceup
+
     renderGame();
 }
 const drawDiscard = () => {
-    if (selectedCard) return;
+    if (selectedCard) {
+        discard.push(selectedCard);
+        passTurn();
+        return;
+    };
     selectedCard = discard.splice(discard.length - 1, 1)[0];
     console.log('Drawing from discard', selectedCard)
-        //Select top card of discard
-        //Render 2nd-from-top discard
-        //Animate it moving to the selected zone.
     renderGame();
 }
 

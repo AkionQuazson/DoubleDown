@@ -16,7 +16,9 @@ deckSpace.addEventListener('click', (e) => {
 
 let renderGame = () => {
     let target;
+    console.log("playerCards: ",playerCards)
     for (let p = 0; p < playerCards.length; p++) {
+        console.log("what is P: ", p)
         switch(p) {
             case 0:
                 target = current;
@@ -30,11 +32,16 @@ let renderGame = () => {
             default:
                 target = document.querySelector('.other' + p);
             }
-// console.log(playerCards[p][0], {target, p});
+
         target.innerHTML = '';
         for (let i = 0; i < playerCards[0][0].length; i++) {
             playerCards[p][0][i]?.render(target);
         }
+        let namePlate = document.createElement("p");
+        namePlate.innerHTML = players[p]
+        namePlate.classList.add("playerName");
+        target.appendChild(namePlate);
+        console.log("renderGame player ", players[p], "\nTarget: ", target)
     }
     selectedArea.innerHTML = '';
     if (selectedCard) {

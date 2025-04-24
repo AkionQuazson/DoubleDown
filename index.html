@@ -8,14 +8,15 @@
 </head>
 <body>
     <div class="screen menu">
+        <h1>Double Down</h1>
         <div>
             <div id="playerList"></div>
             <button id="addPlayerBtn">+ Add Player</button>
         </div>
         <div class="options">
-            
+            <p>Cusomization features coming. Eventually.</p>
+            <button id="gameStartBtn">Start Game</button>
         </div>
-        <button id="gameStartBtn">Start Game</button>
     </div>
     <div class="screen play hidden">
         <div class="playArea otherPlayers"></div>
@@ -26,7 +27,11 @@
         </div>
         <div class="playArea currentPlayer"></div>
     </div>
-    <div class="screen end hidden"></div>
+    <div class="screen end hidden">
+        <div id="scores"></div>
+        <button id="restartBtn">Play Again?</button>
+    </div>
+    <script src="js/names.js"></script>
     <script src="js/shuffler.js"></script>
     <script src="js/boardRender.js"></script>
     <script src="js/gameplay.js"></script>

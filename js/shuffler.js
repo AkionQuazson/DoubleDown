@@ -90,7 +90,9 @@ const shuffle = () => {
 
 let discard
 let playerCards
-let setupGame = (playerNumber) => {
+let setupGame = () => {
+    console.log("setupGame: players: ",players)
+    let playerNumber = players.length
     discard = [new Card()]
     discard.push(deck.splice(0, 1)[0]);
     discard[0].hidden = false;
@@ -105,6 +107,7 @@ let setupGame = (playerNumber) => {
     // console.log({playerCards, deck});
         }
     }
+    others.innerHTML = '';
     if (playerCards.length > 3) {
         for (let p = 2; p < playerCards.length - 1; p++){
             let newPlayer = document.createElement('div')
