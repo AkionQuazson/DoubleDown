@@ -100,10 +100,8 @@ closeRulesModal.addEventListener('click', () => {
     rulesModal.classList.add('hidden');
 });
 
-window.addEventListener('click', (e) => {
-    if (e.target === rulesModal) {
-        rulesModal.classList.add('hidden');
-    }
+rulesModal.addEventListener('click', (e) => {
+    rulesModal.classList.add('hidden');
 });
 
 addNewPlayer(randomPlayerName());

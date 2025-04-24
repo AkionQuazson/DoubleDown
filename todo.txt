@@ -1,5 +1,4 @@
 Style opening page
-Create tutorial
 Style end score page
 Add gamerule modification page
 Add new game button on end page
@@ -15,7 +14,7 @@ Modifications
 AI opponents
     Will or will not pair AK or AW
     Will draw K or A from discard (everyone draws Ws)
-    Will or will not look at playerLeft
-    Will or will not look at playerRight (more likely than playerLeft)
+    Will or will not look at nextPlayer
+    Will or will not look at previousPlayer (less likely than nextPlayer)
     Will always reduce points vs trading off points to prevent double-downs
     How aggressively will it close the game?
