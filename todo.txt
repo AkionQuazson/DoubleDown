@@ -1,6 +1,7 @@
 Style opening page
 Create tutorial
 Style end score page
+Add gamerule modification page
 Add new game button on end page
 Buttons to navigate between "view board" and "view score"
 Style gamepage

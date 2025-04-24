@@ -134,7 +134,5 @@ const turnAllUp = () => {
         player[1].score = score;
     })
     renderGame();
-    setTimeout(() => {
-        endGame();
-    }, 10000);
+    endGame();
 }

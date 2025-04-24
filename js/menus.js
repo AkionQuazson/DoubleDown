@@ -1,6 +1,14 @@
 let screens = document.querySelectorAll('.screen');
+<<<<<<< HEAD
 let players = [];
 const startGame = (playerNames) => {
+=======
+const startGame = () => {
+    if (playerList.childElementCount < 2) { 
+        alert('Must have 2 or more players.');
+        return;
+    }
+>>>>>>> 183157f4133da45569d962a4f700c8eb1710ad4e
     screens[0].classList.add('hidden');
     screens[1].classList.remove('hidden');
     newDeck();
@@ -19,11 +27,22 @@ const endGame = () => {
         playerScore.innerHTML = player[1].name + ' ' + player[1].score;
         scoreDisplay.appendChild(playerScore);
     });
+
+    let switchButton = document.createElement('button');
+    switchButton.innerText = 'View Board';
+    switchButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        viewPlayOrScore();
+    });
+    screens[2].appendChild(switchButton);
+    switchButton.innerText = 'View Scores';
+    screens[1].appendChild(switchButton);
+    console.log('Appended switchButtons');
 }
 
-const switchToMenu = () => {
-    screens[2].classList.add('hidden');
-    screens[1].classList.remove('hidden');
+const viewPlayOrScore = () => {
+    screens[2].classList.toggle('hidden');
+    screens[1].classList.toggle('hidden');
 }
 
 const randomPlayerName = () => {
@@ -42,6 +61,15 @@ const addNewPlayer = (name) => {
     nameInput.classList = 'playerNameInput';
     nameInput.value = name;
     newPlayer.appendChild(nameInput);
+    
+    let removePlayerButton = document.createElement('button');
+    removePlayerButton.innerText = 'X';
+    removePlayerButton.classList = 'removeButton';
+    removePlayerButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.target.parentElement.remove();
+    })
+    newPlayer.appendChild(removePlayerButton);
 
     let removeButton = document.createElement('button');
     removeButton.innerHTML = 'X'
@@ -77,6 +105,7 @@ document.getElementById('gameStartBtn').addEventListener('click', (e) => {
     let playerNames = currentPlayers.map((nameInput) => nameInput.value);
     startGame(playerNames);
 });
+<<<<<<< HEAD
 
 document.getElementById('restartBtn').addEventListener('click', (e) => {
     e.preventDefault();
@@ -110,3 +139,7 @@ addNewPlayer(randomPlayerName());
 addNewPlayer(randomPlayerName());
 addNewPlayer(randomPlayerName());
 addNewPlayer(randomPlayerName());
+=======
+addNewPlayer('Player0');
+addNewPlayer('Player1');
+>>>>>>> 183157f4133da45569d962a4f700c8eb1710ad4e
