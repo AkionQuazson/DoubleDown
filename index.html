@@ -17,6 +17,7 @@
             <p>Cusomization features coming. Eventually.</p>
             <button id="gameStartBtn">Start Game</button>
         </div>
+        <button id="rulesBtnMenu" class="rulesBtn">Rules</button>
     </div>
     <div class="screen play hidden">
         <div class="playArea otherPlayers"></div>
@@ -26,10 +27,36 @@
         <div class="playArea selected">
         </div>
         <div class="playArea currentPlayer"></div>
+        <button id="rulesBtnPlay" class="rulesBtn">Rules</button>
     </div>
     <div class="screen end hidden">
         <div id="scores"></div>
         <button id="restartBtn">Play Again?</button>
+    </div>
+    <div id="rulesModal" class="modal hidden">
+        <div class="modalContent">
+            <span id="closeRulesModal" class="close">&times;</span>
+            <h2>Game Rules</h2>
+            <p>Setup: (The app will automatically set up the game based on the players provided)</p>
+            <ul>
+                <li>Shuffle two standard decks of cards together (including all 4 jokers).</li>
+                <li>Deal 8 cards to each player, set them in a 2x4 grid, then turn 2 of those cards faceup. (Done randomly in app)</li>
+                <li>Discard the top card of the deck</li>
+            </ul>
+            <p>Gameplay:</p>
+            <ul>
+                <li>Players take turns. At the beginning of your turn, draw a card from the deck or discard. (In the app, click on either the facedown or faceup card in the middle of the screen)</li>
+                <li>Use the card you drew to replace one of the cards in your grid. (In the app, click on the related card)</li>
+                <li>If two faceup cards are across from each other (the same column), both cards are locked, and can't be replaced.</li>
+                <li>If you draw a card that matches a faceup card in your grid, you can stack the matching cards, then flip the facedown card from across onto the match and discard all three! Double Down!</li>
+            </ul>
+            <p>Game End:</p>
+            <ul>
+                <li>When a player starts their turn with all cards removed or locked, the game ends.</li>
+                <li>Each player who still has facedown cards turns those cards faceup.</li>
+                <li>The player with the lowest score wins. (Numbers are worth their value, Q and J are worth 10, K is worth 0, A is worth 1, and Joker is worth -3)</li>
+            </ul>
+        </div>
     </div>
     <script src="js/names.js"></script>
     <script src="js/shuffler.js"></script>

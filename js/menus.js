@@ -85,6 +85,27 @@ document.getElementById('restartBtn').addEventListener('click', (e) => {
     screens[0].classList.remove('hidden');
 })
 
+const rulesModal = document.getElementById('rulesModal');
+const closeRulesModal = document.getElementById('closeRulesModal');
+
+document.getElementById('rulesBtnMenu').addEventListener('click', () => {
+    rulesModal.classList.remove('hidden');
+});
+
+document.getElementById('rulesBtnPlay').addEventListener('click', () => {
+    rulesModal.classList.remove('hidden');
+});
+
+closeRulesModal.addEventListener('click', () => {
+    rulesModal.classList.add('hidden');
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target === rulesModal) {
+        rulesModal.classList.add('hidden');
+    }
+});
+
 addNewPlayer(randomPlayerName());
 addNewPlayer(randomPlayerName());
 addNewPlayer(randomPlayerName());
